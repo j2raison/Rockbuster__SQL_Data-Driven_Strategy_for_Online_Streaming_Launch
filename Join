@@ -1,0 +1,18 @@
+# This SQL query locates the top 5 customers in any of the top 10 cities who’ve paid the highest total amounts to Rockbuster Video.
+
+SELECT B.customer_id,
+       B.first_name, 
+       B.last_name,
+       D.city,
+       E.country,
+       SUM(amount) AS total_amount_paid
+FROM payment A
+JOIN customer B ON A.customer_id = B.customer_id
+JOIN address C ON B.address_id = C.address_id
+JOIN city D ON C.city_id = D.city_id
+JOIN country E ON D.country_id = E.country_id
+WHERE city IN ('Aurora', 'Atlixco', 'Xintai', 'Adoni', 'Dhule (Dhulia)',
+              'Kurashiki', 'Pingxian', 'Sivas', 'Celaya', 'So Leopoldo')
+GROUP BY B.customer_id, B.first_name, B.last_name, D.city, E.country
+ORDER BY total_amount_paid DESC
+LIMIT 5;
