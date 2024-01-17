@@ -1,4 +1,4 @@
-# Rockbuster__SQL_Data-Driven_Strategy_for_Online_Streaming_Launch
+# Rockbuster Stealth LLC - Data-Driven Strategy for Online Streaming Launch
 This repository hosts the data analysis project for Rockbuster Stealth LLC, a traditional movie rental company evolving to compete in the digital streaming landscape (dominated by Netflix and Amazon Prime). As the company transitions to an online video rental service, this project aims to harness the power of data analytics to inform and shape Rockbuster's strategic decisions in this new venture.
 
 ## Key Features:
