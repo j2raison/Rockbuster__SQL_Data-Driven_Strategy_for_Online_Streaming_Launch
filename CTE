@@ -1,0 +1,31 @@
+# This SQL query containing a CTE (common table expression) finds out the Top 3 Movie Categories for Countries in the Top 10% of Sales
+
+WITH   country_category_sales AS (	
+                                  SELECT  J.country,	
+                                          F.name AS category_name,	
+                                          SUM( A.amount) AS total_sales	
+                                  FROM payment A	
+                                  INNER JOIN rental B ON  A.rental_id = B.rental_id	
+                                  INNER JOIN inventory C ON B.inventory_id = C.inventory_id	
+                                  INNER JOIN film D ON C.film_id = D.film_id	
+                                  INNER JOIN film_category E ON D.film_id = E.film_id	
+                                  INNER JOIN category F ON E.category_id = F.category_id	
+                                  INNER JOIN customer G ON B.customer_id = G.customer_id	
+                                  INNER JOIN address H ON G.address_id = H.address_id	
+                                  INNER JOIN city I ON H.city_id = I.city_id	
+                                  INNER JOIN country J ON I.country_id = J.country_id	
+                                  WHERE J.country IN ('India','China','United States','Japan','Mexico','Brazil','Russian Federation','Philippines','Turkey','Indonesia','Nigeria')	
+                                  GROUP BY J.country, F.name),	
+      ranked_categories AS (	
+                      SELECT K.country,	
+                      K.category_name,	
+                      K.total_sales,	
+                      DENSE_RANK() OVER (PARTITION BY K.country ORDER BY K.total_sales DESC) AS category_rank	
+                      FROM country_category_sales K	)	
+
+SELECT L.country,	
+L.category_name,	
+L.total_sales	
+FROM ranked_categories L	
+WHERE L.category_rank <= 3	
+ORDER BY L.country, L.category_rank	
