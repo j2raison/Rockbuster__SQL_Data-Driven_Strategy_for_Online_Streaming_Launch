@@ -15,4 +15,4 @@ This repository hosts the data analysis project for Rockbuster Stealth LLC, a tr
 * Develop a clear, actionable strategy for Rockbuster's entry into the online streaming market.
 
 ## Visualizations
-The visualizations for the project were created in Tableau Public. The visuals can be found here: [Rockbuster Visuals]([https://public.tableau.com/app/profile/joris.jan1237/viz/RockbustersData-DrivenStrategyfor2020/Story1?publish=yes])
+The visualizations for the project were created in Tableau Public. The visuals can be found here: [Rockbuster Visuals](https://public.tableau.com/app/profile/joris.jan1237/viz/RockbustersData-DrivenStrategyfor2020/Story1?publish=yes)
